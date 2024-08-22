@@ -8,29 +8,26 @@ const Subtitle = styled.h4`
 `
 
 export default function SpaceTourism() {
-  return (
-    <>
-      <Background>
-        <Subtitle>HELLO WORLD</Subtitle>
-      </Background>
-    </>
-  )
+    return (
+        <Background>
+            <Subtitle>HELLO WORLD</Subtitle>
+        </Background>
+    )
 }
 
 const Background = styled.main`
-  // MOBILE + DEFAULT STYLES
   height: 100vh;
   width: 100vw;
-  background-image: url('/assets/home/background-home-mobile.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-image: url('/assets/home/background-home-desktop.jpg');
 
-  //@include tablet {
-  //  background-image: url('/assets/home/background-home-tablet.jpg');
-  //}
+  @media (max-width: 768px) {
+    background-image: url('/assets/home/background-home-tablet.jpg');
+  }
 
-  //@include desktop {
-  //  background-image: url('/assets/home/background-home-desktop.jpg');
-  //}
+  @media (max-width: 425px) {
+    background-image: url('/assets/home/background-home-mobile.jpg');
+  }
 `
