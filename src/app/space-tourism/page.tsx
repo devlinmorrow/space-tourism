@@ -23,10 +23,9 @@ const Background = styled.main`
   background-size: cover;
   background-image: url('/assets/home/background-home-desktop.jpg');
 
-  @media (max-width: 768px) {
+  @media (max-width: var(--tablet-max-width)) {
     background-image: url('/assets/home/background-home-tablet.jpg');
   }
-
   @media (max-width: 425px) {
     background-image: url('/assets/home/background-home-mobile.jpg');
   }
