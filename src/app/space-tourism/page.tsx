@@ -1,19 +1,22 @@
 'use client'
 
 import styled from 'styled-components'
-import theme from "tailwindcss/defaultTheme";
+import { QUERIES } from '../constants'
+
+const colorString = "color: pink;"
 
 const Subtitle = styled.h4`
-  color: green;
+  ${colorString}
 `
 
 export default function SpaceTourism() {
-    return (
-        <Background>
-            <Subtitle>HELLO WORLD</Subtitle>
-        </Background>
-    )
+  return (
+    <Background>
+      <Subtitle>HELLO WORLD</Subtitle>
+    </Background>
+  )
 }
+
 
 const Background = styled.main`
   height: 100vh;
@@ -23,10 +26,11 @@ const Background = styled.main`
   background-size: cover;
   background-image: url('/assets/home/background-home-desktop.jpg');
 
-  @media (max-width: var(--tablet-max-width)) {
+  @media ${QUERIES.tabletAndDown} {
     background-image: url('/assets/home/background-home-tablet.jpg');
   }
-  @media (max-width: 425px) {
+
+  @media ${QUERIES.mobileAndDown} {
     background-image: url('/assets/home/background-home-mobile.jpg');
   }
 `
