@@ -5,18 +5,17 @@ import { QUERIES } from '../constants'
 
 const colorString = "color: pink;"
 
-const Subtitle = styled.h4`
-  ${colorString}
-`
-
 export default function SpaceTourism() {
   return (
     <Background>
-      <Subtitle>HELLO WORLD</Subtitle>
+      <Subtitle>So, you want to travel to</Subtitle>
     </Background>
   )
 }
 
+const Subtitle = styled.h3`
+  color: var(--blue-300)
+`
 
 const Background = styled.main`
   height: 100vh;
