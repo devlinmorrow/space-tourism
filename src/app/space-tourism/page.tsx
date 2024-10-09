@@ -2,19 +2,44 @@
 
 import styled from 'styled-components'
 import { QUERIES } from '../constants'
-
-const colorString = "color: pink;"
+import GlobalStyle from '../globalStyles'
 
 export default function SpaceTourism() {
   return (
-    <Background>
-      <Subtitle>So, you want to travel to</Subtitle>
-    </Background>
+    <>
+      <GlobalStyle />
+      <Background>
+        <Subtitle>So, you want to travel to</Subtitle>
+        <MainHeading>SPACE</MainHeading>
+        <Description>
+          Let’s face it; if you want to go to space, you might as well genuinely go to
+          outer space and not hover kind of on the edge of it. Well sit back, and relax
+          because we’ll give you a truly out of this world experience!
+        </Description>
+      </Background>
+    </>
   )
 }
+const TextStyles = styled`
+  h1 {
+
+}
+`
+
+const Heading3 = styled.h3`
+
+`
+
+const Description = styled.p`
+  color: var(--blue-300);
+`
+
+const MainHeading = styled.h1`
+  color: var(--white);
+`
 
 const Subtitle = styled.h3`
-  color: var(--blue-300)
+  color: var(--blue-300);
 `
 
 const Background = styled.main`
