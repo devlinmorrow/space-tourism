@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 // TODO: Bellefair Regular - Preset 1, 2, 3, 4, 6
 // TODO: Barlow Condensed Regular - Preset 5, 7, 8, 9
@@ -37,3 +37,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default GlobalStyle;
+
+export const textPreset4 = css`
+  font-size: 32px;    // Default font size
+  line-height: normal;   // Default line height
+`;

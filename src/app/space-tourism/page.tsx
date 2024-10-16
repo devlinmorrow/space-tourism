@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { QUERIES } from "../constants";
-import GlobalStyle from "../globalStyles";
+import GlobalStyle, { textPreset4 } from "../globalStyles";
 
 export default function SpaceTourism() {
   return (
@@ -20,16 +20,22 @@ export default function SpaceTourism() {
               this world experience!
             </Description>
           </Texts>
-          <ExploreButtonContainer>Explore Button</ExploreButtonContainer>
+          <ExploreButtonContainer>
+            <ExploreButton>Explore</ExploreButton>
+          </ExploreButtonContainer>
         </Hero>
       </Background>
     </>
   );
 }
 
+
 const Hero = styled.div`
   display: flex;
   padding: 128px 165px;
+  height: 100%;
+  align-items: flex-end;
+  gap: 66px;
 `;
 
 const Texts = styled.div`
@@ -37,9 +43,20 @@ const Texts = styled.div`
 `;
 
 const ExploreButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
   flex: 1;
   color: var(--white); // temp
 `;
+
+const ExploreButton = styled.button`
+  ${textPreset4}
+  height: 272px;
+  width: 272px;
+  background-color: var(--white);
+  color: var(--blue-900);
+  border-radius: 50%;
+`
 
 const Description = styled.p`
   color: var(--blue-300);
