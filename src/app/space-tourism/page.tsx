@@ -10,7 +10,10 @@ export default function SpaceTourism() {
       <GlobalStyle />
       <Background>
         <Header>
-          <Line />
+          <ImageLine>
+            <Image />
+            <Line />
+          </ImageLine>
           <NavBar>
             <NavLink>00 Home</NavLink>
             <NavLink>01 Destination</NavLink>
@@ -38,14 +41,45 @@ export default function SpaceTourism() {
   );
 }
 
+const ImageLine = styled.div`
+display: flex;
+align-items: center;
+  height: 96px;
+width: 100%;
+margin-right: -20px;
+z-index: 100;
+`
+
+const Image = styled.div`
+margin-inline: 64px;
+background-color: var(--white);
+width: 48px;
+height: 48px;
+`
+
 const Header = styled.div`
-  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  background-color: green;
+  width: 100%;
+  height: 136px;
 `;
 
-const Line = styled.div``;
+const Line = styled.hr`
+height: 1px;
+width: 100%;
+border-color: blue;
+size: 4px;
+`;
 
 const NavBar = styled.nav`
   display: flex;
+  background-color: orange;
+width: 736px;
+  height: 96px;
 `;
 
 const NavLink = styled.p`
