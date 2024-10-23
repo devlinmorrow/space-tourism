@@ -9,6 +9,15 @@ export default function SpaceTourism() {
     <>
       <GlobalStyle />
       <Background>
+        <Header>
+          <Line />
+          <NavBar>
+            <NavLink>00 Home</NavLink>
+            <NavLink>01 Destination</NavLink>
+            <NavLink>02 Crew</NavLink>
+            <NavLink>03 Technology</NavLink>
+          </NavBar>
+        </Header>
         <Hero>
           <Texts>
             <Subtitle>So, you want to travel to</Subtitle>
@@ -29,6 +38,19 @@ export default function SpaceTourism() {
   );
 }
 
+const Header = styled.div`
+  height: 400px;
+`;
+
+const Line = styled.div``;
+
+const NavBar = styled.nav`
+  display: flex;
+`;
+
+const NavLink = styled.p`
+  color: var(--white);
+`;
 
 const Hero = styled.div`
   display: flex;
@@ -46,7 +68,7 @@ const ExploreButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   flex: 1;
-  color: var(--white); // temp
+  color: var(--white);
 `;
 
 const ExploreButton = styled.button`
@@ -56,7 +78,7 @@ const ExploreButton = styled.button`
   background-color: var(--white);
   color: var(--blue-900);
   border-radius: 50%;
-`
+`;
 
 const Description = styled.p`
   color: var(--blue-300);
