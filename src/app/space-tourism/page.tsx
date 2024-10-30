@@ -75,14 +75,17 @@ const Line = styled.hr`
   size: 4px;
 `;
 
+// TODO: update position for tablet view to remove top spacing
 const NavBar = styled.nav`
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background-color: orange;
   height: 96px;
-  padding: 0 100px 0 200px;
+  padding: 0 64px 0 32px;
+  text-wrap: nowrap;
+  gap: 32px;
 `;
 
 const NavLink = styled.p`
@@ -95,6 +98,15 @@ const Hero = styled.div`
   height: 100%;
   align-items: flex-end;
   gap: 66px;
+
+  @media ${QUERIES.tabletAndDown} {
+    flex-direction: column;
+    align-items: center;
+    padding: 128px 165px;
+  }
+
+  // @media ${QUERIES.mobileAndDown} {
+  // }
 `;
 
 const Texts = styled.div`
@@ -138,6 +150,7 @@ const Background = styled.main`
   background-image: url("/assets/home/background-home-desktop.jpg");
 
   @media ${QUERIES.tabletAndDown} {
+    height: 100%;
     background-image: url("/assets/home/background-home-tablet.jpg");
   }
 
