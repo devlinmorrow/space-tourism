@@ -42,20 +42,20 @@ export default function SpaceTourism() {
 }
 
 const ImageLine = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  flex: 1;
+  align-items: center;
   height: 96px;
-width: 100%;
-margin-right: -20px;
-z-index: 100;
-`
+  margin-right: -20px;
+  z-index: 100;
+`;
 
 const Image = styled.div`
-margin-inline: 64px;
-background-color: var(--white);
-width: 48px;
-height: 48px;
-`
+  margin-inline: 64px;
+  background-color: var(--white);
+  width: 48px;
+  height: 48px;
+`;
 
 const Header = styled.div`
   display: flex;
@@ -69,17 +69,20 @@ const Header = styled.div`
 `;
 
 const Line = styled.hr`
-height: 1px;
-width: 100%;
-border-color: blue;
-size: 4px;
+  height: 1px;
+  width: 100%;
+  border-color: blue;
+  size: 4px;
 `;
 
 const NavBar = styled.nav`
   display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
   background-color: orange;
-width: 736px;
   height: 96px;
+  padding: 0 100px 0 200px;
 `;
 
 const NavLink = styled.p`
