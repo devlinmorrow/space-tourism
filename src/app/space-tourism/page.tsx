@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { QUERIES } from "../constants";
 import GlobalStyle, { textPreset4 } from "../globalStyles";
+import logo from "../../../public/assets/shared/logo.svg";
 
 export default function SpaceTourism() {
   return (
@@ -11,7 +12,7 @@ export default function SpaceTourism() {
       <Background>
         <Header>
           <ImageLine>
-            <Image />
+            <Image src={logo.src} alt="something" />
             <Line />
           </ImageLine>
           <NavBar>
@@ -50,9 +51,8 @@ const ImageLine = styled.div`
   z-index: 100;
 `;
 
-const Image = styled.div`
+const Image = styled.img`
   margin-inline: 64px;
-  background-color: var(--white);
   width: 48px;
   height: 48px;
 `;
@@ -73,9 +73,14 @@ const Line = styled.hr`
   width: 100%;
   border-color: blue;
   size: 4px;
+
+  // TODO: idea - have transition for line to fade out
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
 `;
 
-// TODO: update position for tablet view to remove top spacing
+// TODO: update position for tablet view to remove top spacing. And get rid '00' for tablet. And hamburger icon for mobile.
 const NavBar = styled.nav`
   display: flex;
   flex: 1;
