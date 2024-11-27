@@ -39,6 +39,6 @@ const GlobalStyle = createGlobalStyle`
 export default GlobalStyle;
 
 export const textPreset4 = css`
-  font-size: 32px;    // Default font size
-  line-height: normal;   // Default line height
+  font-size: 32px; // Default font size
+  line-height: normal; // Default line height
 `;
