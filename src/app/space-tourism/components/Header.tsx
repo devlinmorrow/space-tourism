@@ -62,10 +62,12 @@ const Line = styled.hr`
   }
 `;
 
-// TODO: Hamburger menu should be rendered but outside the right of the viewport, then when the hamburger is clicked, update
-// the position to show the menu inside the viewport
+// TODO: Hamburger menu should be rendered but outside the right of
+// the viewport, then when the hamburger is clicked, update the
+// position to show the menu inside the viewport
 
-// TODO: update position for tablet view to remove top spacing. And get rid '00' for tablet. And hamburger icon for mobile.
+// TODO: update position for tablet view to remove top spacing. And
+// get rid '00' for tablet. And hamburger icon for mobile.
 const NavBar = styled.nav`
   display: flex;
   flex: 1;

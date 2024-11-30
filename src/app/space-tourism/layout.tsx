@@ -12,7 +12,8 @@ export default function SpaceTourismLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  // TODO: use pathname to underline the associated navlink and to render the background image
+  // TODO: use pathname to underline the associated navlink and to
+  // render the background image
   console.log({ pathname });
 
   //  const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname]
