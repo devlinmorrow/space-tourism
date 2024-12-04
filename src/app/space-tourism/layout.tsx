@@ -7,7 +7,7 @@ import GlobalStyle from "../globalStyles";
 import { Header } from "./components/Header";
 
 const BACKGROUND_MAPPING = {
-  "space-tourism": {
+  "/space-tourism": {
     mobile: "/assets/home/background-home-mobile.jpg",
     tablet: "/assets/home/background-home-tablet.jpg",
     desktop: "/assets/home/background-home-desktop.jpg",
@@ -24,16 +24,13 @@ export default function SpaceTourismLayout({
 }>) {
   const pathname = usePathname();
   // TODO: use pathname to underline the associated navlink and to
-  // render the background image
-  console.log({ pathname });
 
-  // const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname];
-  const desktop = "/assets/home/background-home-mobile.jpg";
+  const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname];
 
   return (
     <>
       <GlobalStyle />
-      <Background src={desktop}>
+      <Background desktopSrc={desktop} tabletSrc={tablet} mobileSrc={mobile}>
         <Header />
         {children}
       </Background>
@@ -42,7 +39,9 @@ export default function SpaceTourismLayout({
 }
 
 interface BackgroundProps {
-  src: string;
+  desktopSrc: string;
+  tabletSrc: string;
+  mobileSrc: string;
 }
 
 const Background = styled.main<BackgroundProps>`
@@ -51,14 +50,14 @@ const Background = styled.main<BackgroundProps>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(${(props) => props.src});
+  background-image: url(${(props) => props.desktopSrc});
 
   @media ${QUERIES.tabletAndDown} {
     height: 100%;
-    background-image: url("/assets/home/background-home-tablet.jpg");
+    background-image: url(${(props) => props.tabletSrc});
   }
 
   @media ${QUERIES.mobileAndDown} {
-    background-image: url("/assets/home/background-home-mobile.jpg");
+    background-image: url(${(props) => props.mobileSrc});
   }
 `;
