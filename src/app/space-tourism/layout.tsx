@@ -12,8 +12,10 @@ const BACKGROUND_MAPPING = {
     tablet: "/assets/home/background-home-tablet.jpg",
     desktop: "/assets/home/background-home-desktop.jpg",
   },
-  destination: {
-    // mobile:
+  "/space-tourism/destination": {
+    mobile: "/assets/destination/background-destination-mobile.jpg",
+    tablet: "/assets/destination/background-destination-tablet.jpg",
+    desktop: "/assets/destination/background-destination-desktop.jpg",
   },
 };
 
@@ -25,12 +27,22 @@ export default function SpaceTourismLayout({
   const pathname = usePathname();
   // TODO: use pathname to underline the associated navlink and to
 
-  const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname];
+  const background = BACKGROUND_MAPPING[pathname];
 
   return (
     <>
       <GlobalStyle />
-      <Background desktopSrc={desktop} tabletSrc={tablet} mobileSrc={mobile}>
+      <Background
+        desktopSrc={
+          background?.desktop ?? BACKGROUND_MAPPING["/space-tourism"].desktop
+        }
+        tabletSrc={
+          background?.tablet ?? BACKGROUND_MAPPING["/space-tourism"].tablet
+        }
+        mobileSrc={
+          background?.mobile ?? BACKGROUND_MAPPING["/space-tourism"].mobile
+        }
+      >
         <Header />
         {children}
       </Background>
