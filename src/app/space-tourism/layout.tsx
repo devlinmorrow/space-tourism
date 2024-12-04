@@ -6,6 +6,17 @@ import { QUERIES } from "../constants";
 import GlobalStyle from "../globalStyles";
 import { Header } from "./components/Header";
 
+const BACKGROUND_MAPPING = {
+  "space-tourism": {
+    mobile: "/assets/home/background-home-mobile.jpg",
+    tablet: "/assets/home/background-home-tablet.jpg",
+    desktop: "/assets/home/background-home-desktop.jpg",
+  },
+  destination: {
+    // mobile:
+  },
+};
+
 export default function SpaceTourismLayout({
   children,
 }: Readonly<{
@@ -16,12 +27,13 @@ export default function SpaceTourismLayout({
   // render the background image
   console.log({ pathname });
 
-  //  const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname]
-  //
+  // const { mobile, tablet, desktop } = BACKGROUND_MAPPING[pathname];
+  const desktop = "/assets/home/background-home-mobile.jpg";
+
   return (
     <>
       <GlobalStyle />
-      <Background>
+      <Background src={desktop}>
         <Header />
         {children}
       </Background>
@@ -29,13 +41,17 @@ export default function SpaceTourismLayout({
   );
 }
 
-const Background = styled.main`
+interface BackgroundProps {
+  src: string;
+}
+
+const Background = styled.main<BackgroundProps>`
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url("/assets/home/background-home-desktop.jpg");
+  background-image: url(${(props) => props.src});
 
   @media ${QUERIES.tabletAndDown} {
     height: 100%;

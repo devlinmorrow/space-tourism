@@ -69,7 +69,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 32px;
   }
 
-
   h5 {
     font-size: 28px;
     letter-spacing: 4px;
