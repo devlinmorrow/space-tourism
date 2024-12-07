@@ -1,47 +1,53 @@
 "use client";
 
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import { QUERIES } from "../constants";
 import GlobalStyle from "../globalStyles";
 import { Header } from "./components/Header";
 
-const BACKGROUND_MAPPING = {
-  "/space-tourism": {
+type MediaQueryImageSrcs = {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+};
+
+type BackgroundMappingType = Record<string, MediaQueryImageSrcs>;
+
+const BACKGROUND_MAPPING: BackgroundMappingType = {
+  "space-tourism": {
     mobile: "/assets/home/background-home-mobile.jpg",
     tablet: "/assets/home/background-home-tablet.jpg",
     desktop: "/assets/home/background-home-desktop.jpg",
   },
-  "/space-tourism/destination": {
+  "space-tourism/destination": {
     mobile: "/assets/destination/background-destination-mobile.jpg",
     tablet: "/assets/destination/background-destination-tablet.jpg",
     desktop: "/assets/destination/background-destination-desktop.jpg",
   },
 };
 
+function getBackgroundImages(pathName: string): MediaQueryImageSrcs {
+  return BACKGROUND_MAPPING[pathName] || BACKGROUND_MAPPING["space-tourism"];
+}
+
 export default function SpaceTourismLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
-  const pathname = usePathname();
+  const pathname = usePathname().replace(/^\//, "");
+  const backgroundImageSrcs = getBackgroundImages(pathname);
+
   // TODO: use pathname to underline the associated navlink and to
-
-  const background = BACKGROUND_MAPPING[pathname];
-
   return (
     <>
       <GlobalStyle />
       <Background
-        desktopSrc={
-          background?.desktop ?? BACKGROUND_MAPPING["/space-tourism"].desktop
-        }
-        tabletSrc={
-          background?.tablet ?? BACKGROUND_MAPPING["/space-tourism"].tablet
-        }
-        mobileSrc={
-          background?.mobile ?? BACKGROUND_MAPPING["/space-tourism"].mobile
-        }
+        $desktopSrc={backgroundImageSrcs.desktop}
+        $tabletSrc={backgroundImageSrcs.tablet}
+        $mobileSrc={backgroundImageSrcs.mobile}
       >
         <Header />
         {children}
@@ -51,9 +57,14 @@ export default function SpaceTourismLayout({
 }
 
 interface BackgroundProps {
-  desktopSrc: string;
-  tabletSrc: string;
-  mobileSrc: string;
+  // The $ prefix is a convention in styled-components to indicate
+  // props that are specifically intended for styling and not
+  // forwarded to the DOM. Styled-components does not forward props
+  // prefixed with $ to the DOM automatically, which helps avoid
+  // React warnings for invalid attributes.
+  $desktopSrc: string;
+  $tabletSrc: string;
+  $mobileSrc: string;
 }
 
 const Background = styled.main<BackgroundProps>`
@@ -62,14 +73,14 @@ const Background = styled.main<BackgroundProps>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(${(props) => props.desktopSrc});
+  background-image: url(${(props) => props.$desktopSrc});
 
   @media ${QUERIES.tabletAndDown} {
     height: 100%;
-    background-image: url(${(props) => props.tabletSrc});
+    background-image: url(${(props) => props.$tabletSrc});
   }
 
   @media ${QUERIES.mobileAndDown} {
-    background-image: url(${(props) => props.mobileSrc});
+    background-image: url(${(props) => props.$mobileSrc});
   }
 `;
