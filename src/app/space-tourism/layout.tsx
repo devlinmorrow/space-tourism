@@ -76,7 +76,6 @@ const Background = styled.main<BackgroundProps>`
   background-image: url(${(props) => props.$desktopSrc});
 
   @media ${QUERIES.tabletAndDown} {
-    height: 100%;
     background-image: url(${(props) => props.$tabletSrc});
   }
 
