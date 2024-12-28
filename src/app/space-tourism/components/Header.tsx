@@ -54,7 +54,6 @@ const Line = styled.hr`
   height: 1px;
   width: 100%;
   border-color: blue;
-  size: 4px;
 
   // TODO: idea - have transition for line to fade out
   @media ${QUERIES.tabletAndDown} {
@@ -75,7 +74,6 @@ const NavBar = styled.nav`
   align-items: center;
   background-color: orange;
   padding: 0 64px 0 32px;
-  text-wrap: nowrap;
   gap: 32px;
   height: 100%;
 `;
