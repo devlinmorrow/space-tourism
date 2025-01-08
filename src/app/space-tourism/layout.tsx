@@ -57,11 +57,6 @@ export default function SpaceTourismLayout({
 }
 
 interface BackgroundProps {
-  // The $ prefix is a convention in styled-components to indicate
-  // props that are specifically intended for styling and not
-  // forwarded to the DOM. Styled-components does not forward props
-  // prefixed with $ to the DOM automatically, which helps avoid
-  // React warnings for invalid attributes.
   $desktopSrc: string;
   $tabletSrc: string;
   $mobileSrc: string;

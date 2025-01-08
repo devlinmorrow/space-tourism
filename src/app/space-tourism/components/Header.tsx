@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logo from "../../../../public/assets/shared/logo.svg";
 import { QUERIES } from "../../constants";
+import { textPreset4, textPreset8 } from "@/app/globalStyles";
 
 export function Header() {
   return (
@@ -79,5 +80,6 @@ const NavBar = styled.nav`
 `;
 
 const NavLink = styled.p`
+  ${textPreset8};
   color: var(--white);
 `;
