@@ -82,12 +82,20 @@ const GlobalStyle = createGlobalStyle`
 export default GlobalStyle;
 
 export const textPreset4 = css`
+  font-family: var(--font-bellefair);
   font-size: 32px;
   line-height: normal;
 `;
 
 export const textPreset8 = css`
+  font-family: var(--font-barlow-condensed);
+  font-weight: 400;
   font-size: 16px;
   line-height: normal;
   letter-spacing: 2px;
+`;
+
+export const textPreset8Bold = css`
+  ${textPreset8};
+  font-weight: 700;
 `;

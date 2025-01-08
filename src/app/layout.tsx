@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import StyledComponentsRegistry from "../lib/registry";
-import { Barlow_Condensed } from "next/font/google";
+import { Barlow_Condensed, Bellefair } from "next/font/google";
 import "./globals.css";
 
-const barlowCondensed = Barlow_Condensed({ weight: ["400"] });
+const barlowCondensed = Barlow_Condensed({ subsets: ['latin'], variable: '--font-barlow-condensed', weight: ['400', '700'] });
+const bellefair = Bellefair({ subsets: ['latin'], variable: '--font-bellefair', weight: '400' })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={barlowCondensed.className}>
+      <body className={`${barlowCondensed.variable} ${bellefair.variable}`}>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
