@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import logo from "../../../../public/assets/shared/logo.svg";
 import { QUERIES } from "../../constants";
-import { textPreset4, textPreset8 } from "@/app/globalStyles";
+import { textPreset8 } from "@/app/globalStyles";
 
 export function Header() {
   return (
@@ -11,10 +11,18 @@ export function Header() {
         <Line />
       </ImageLine>
       <NavBar>
-        <NavLink>00 Home</NavLink>
-        <NavLink>01 Destination</NavLink>
-        <NavLink>02 Crew</NavLink>
-        <NavLink>03 Technology</NavLink>
+        <NavLink>
+          <strong>00</strong> Home
+        </NavLink>
+        <NavLink>
+          <strong>01</strong> Destination
+        </NavLink>
+        <NavLink>
+          <strong>02</strong> Crew
+        </NavLink>
+        <NavLink>
+          <strong>03</strong> Technology
+        </NavLink>
       </NavBar>
     </HeaderWrapper>
   );
@@ -79,7 +87,7 @@ const NavBar = styled.nav`
   height: 100%;
 `;
 
-const NavLink = styled.p`
+const NavLink = styled.a`
   ${textPreset8};
   color: var(--white);
 `;
