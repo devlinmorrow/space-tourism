@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import logo from "../../../../public/assets/shared/logo.svg";
 import { QUERIES } from "../../constants";
-import { textPreset8 } from "@/app/globalStyles";
+import { NavBar } from "@/app/space-tourism/components/NavBar";
 
 export function Header() {
   return (
@@ -10,20 +10,7 @@ export function Header() {
         <Image src={logo.src} alt="something" />
         <Line />
       </ImageLine>
-      <NavBar>
-        <NavLink>
-          <strong>00</strong> Home
-        </NavLink>
-        <NavLink>
-          <strong>01</strong> Destination
-        </NavLink>
-        <NavLink>
-          <strong>02</strong> Crew
-        </NavLink>
-        <NavLink>
-          <strong>03</strong> Technology
-        </NavLink>
-      </NavBar>
+      <NavBar />
     </HeaderWrapper>
   );
 }
@@ -68,26 +55,4 @@ const Line = styled.hr`
   @media ${QUERIES.tabletAndDown} {
     display: none;
   }
-`;
-
-// TODO: Hamburger menu should be rendered but outside the right of
-// the viewport, then when the hamburger is clicked, update the
-// position to show the menu inside the viewport
-
-// TODO: update position for tablet view to remove top spacing. And
-// get rid '00' for tablet. And hamburger icon for mobile.
-const NavBar = styled.nav`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: orange;
-  padding: 0 64px 0 32px;
-  gap: 32px;
-  height: 100%;
-`;
-
-const NavLink = styled.a`
-  ${textPreset8};
-  color: var(--white);
 `;
