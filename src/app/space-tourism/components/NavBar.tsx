@@ -2,6 +2,7 @@ import { textPreset8 } from "@/app/globalStyles";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { QUERIES } from "../../constants";
 
 export function NavBar() {
   const pathname = usePathname();
@@ -26,6 +27,7 @@ export function NavBar() {
           </NavLink>
         );
       })}
+      <Button>HAMBURGER</Button>
     </NavBarWrapper>
   );
 }
@@ -39,17 +41,32 @@ const NavBarWrapper = styled.nav`
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-  background-color: orange;
   padding: 0 64px 0 32px;
   gap: 32px;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+
+  @media ${QUERIES.mobileAndDown} {
+    background-color: unset;
+    backdrop-filter: unset;
+  }
 `;
+
+const Button = styled.button`
+  display: none;
+  color: white;
+
+  @media ${QUERIES.mobileAndDown} {
+    display: block;
+  }
+`
 
 interface NavLinkProps {
   $active?: boolean;
 }
 
-const NavLink = styled(Link)<NavLinkProps>`
+const NavLink = styled(Link) <NavLinkProps>`
   height: 100%;
   display: flex;
   align-items: center;
@@ -59,4 +76,8 @@ const NavLink = styled(Link)<NavLinkProps>`
   border-top: solid 4px transparent;
   border-bottom: ${(props) =>
     props.$active ? "solid 4px white" : "solid 4px transparent"};
+
+  @media ${QUERIES.mobileAndDown} {
+    display: none;
+  }
 `;
