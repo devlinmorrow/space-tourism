@@ -1,6 +1,7 @@
 import { textPreset8 } from "@/app/globalStyles";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function NavBar() {
   const pathname = usePathname();
@@ -18,7 +19,6 @@ export function NavBar() {
         return (
           <NavLink
             key={tab.path}
-            // TODO swap these for styled Next links instead to stop hard reload flash
             href={tab.path}
             $active={tab.path === pathname}
           >
@@ -51,7 +51,7 @@ interface NavLinkProps {
   $active?: boolean;
 }
 
-const NavLink = styled.a<NavLinkProps>`
+const NavLink = styled(Link)<NavLinkProps>`
   height: 100%;
   display: flex;
   align-items: center;
