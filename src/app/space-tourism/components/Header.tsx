@@ -28,6 +28,7 @@ const HeaderWrapper = styled.div`
 
   @media ${QUERIES.tabletAndDown} {
     padding-top: 0;
+    height: 96px;
   }
 `;
 

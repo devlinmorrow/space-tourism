@@ -34,8 +34,6 @@ export function NavBar() {
 // the viewport, then when the hamburger is clicked, update the
 // position to show the menu inside the viewport
 
-// TODO: update position for tablet view to remove top spacing. And
-// get rid '00' for tablet. And hamburger icon for mobile.
 const NavBarWrapper = styled.nav`
   display: flex;
   flex: 1;
