@@ -2,13 +2,13 @@
 
 import styled from "styled-components";
 import { QUERIES } from "../constants";
-import { textPreset4 } from "../globalStyles";
+import { textPreset1, textPreset4, textPreset5, textPreset9 } from "../globalStyles";
 
 export default function SpaceTourism() {
   return (
     <Hero>
       <Texts>
-        <Subtitle>So, you want to travel to</Subtitle>
+        <Subtitle>SO, YOU WANT TO TRAVEL TO</Subtitle>
         <MainHeading>SPACE</MainHeading>
         <Description>
           Let’s face it; if you want to go to space, you might as well genuinely
@@ -65,13 +65,16 @@ const ExploreButton = styled.button`
 `;
 
 const Description = styled.p`
+  ${textPreset9}
   color: var(--blue-300);
 `;
 
 const MainHeading = styled.h1`
+  ${textPreset1}
   color: var(--white);
 `;
 
 const Subtitle = styled.h3`
+  ${textPreset5}
   color: var(--blue-300);
 `;

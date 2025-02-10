@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
+import { QUERIES } from "./constants";
 
 // TODO: Bellefair Regular - Preset 1, 2, 3, 4, 6
 // TODO: Barlow Condensed Regular - Preset 5, 7, 8, 9
@@ -81,10 +82,41 @@ const GlobalStyle = createGlobalStyle`
 
 export default GlobalStyle;
 
+export const textPreset1 = css`
+  font-family: var(--font-bellefair);
+  font-size: 144px;
+  line-height: normal;
+  letter-spacing: 0px;
+
+  @media ${QUERIES.mobileAndDown} {
+    font-size: 80px;
+  }
+`;
+
 export const textPreset4 = css`
   font-family: var(--font-bellefair);
   font-size: 32px;
   line-height: normal;
+
+  @media ${QUERIES.mobileAndDown} {
+    font-size: 18px;
+  }
+
+  @media ${QUERIES.tabletAndDown} {
+    font-size: 24px;
+  }
+`;
+
+export const textPreset5 = css`
+  font-family: var(--font-barlow-condensed);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: normal;
+  letter-spacing: 4px;
+
+  @media ${QUERIES.tabletAndDown} {
+    font-size: 20px;
+  }
 `;
 
 export const textPreset8 = css`
@@ -93,6 +125,26 @@ export const textPreset8 = css`
   font-size: 16px;
   line-height: normal;
   letter-spacing: 2px;
+
+  @media ${QUERIES.mobileAndDown} {
+    font-size: 14px;
+  }
+`;
+
+export const textPreset9 = css`
+  font-family: var(--font-barlow);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 180%;
+  letter-spacing: 0px;
+
+  @media ${QUERIES.mobileAndDown} {
+    font-size: 15px;
+  }
+
+  @media ${QUERIES.tabletAndDown} {
+    font-size: 16px;
+  }
 `;
 
 export const textPreset8Bold = css`
