@@ -49,7 +49,8 @@ const Image = styled.img`
 const Line = styled.hr`
   height: 1px;
   width: 100%;
-  border-color: blue;
+  border-color: #979797;
+  opacity: 0.25;
 
   // TODO: idea - have transition for line to fade out
   @media ${QUERIES.tabletAndDown} {

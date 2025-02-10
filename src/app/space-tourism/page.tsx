@@ -18,7 +18,7 @@ export default function SpaceTourism() {
         </Description>
       </Texts>
       <ExploreButtonContainer>
-        <ExploreButton>Explore</ExploreButton>
+        <ExploreButton>EXPLORE</ExploreButton>
       </ExploreButtonContainer>
     </Hero>
   );
@@ -59,6 +59,9 @@ const ExploreButton = styled.button`
   background-color: var(--white);
   color: var(--blue-900);
   border-radius: 50%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
 `;
 
 const Description = styled.p`

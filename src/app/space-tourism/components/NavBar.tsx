@@ -23,7 +23,7 @@ export function NavBar() {
             href={tab.path}
             $active={tab.path === pathname}
           >
-            <b>0{i}</b> {tab.text}
+            <b>0{i}</b> {tab.text.toUpperCase()}
           </NavLink>
         );
       })}
@@ -60,13 +60,13 @@ const Button = styled.button`
   @media ${QUERIES.mobileAndDown} {
     display: block;
   }
-`
+`;
 
 interface NavLinkProps {
   $active?: boolean;
 }
 
-const NavLink = styled(Link) <NavLinkProps>`
+const NavLink = styled(Link)<NavLinkProps>`
   height: 100%;
   display: flex;
   align-items: center;
