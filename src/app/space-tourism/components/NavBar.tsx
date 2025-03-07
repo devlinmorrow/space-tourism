@@ -14,6 +14,10 @@ export function NavBar() {
     { path: "/space-tourism/technology", text: "Technology" },
   ];
 
+  const handleClick = () => {
+    console.log('hamburger clicked')
+  }
+
   return (
     <NavBarWrapper>
       {tabList.map((tab, i) => {
@@ -27,7 +31,7 @@ export function NavBar() {
           </NavLink>
         );
       })}
-      <Button>HAMBURGER</Button>
+      <Button onClick={handleClick}>HAMBURGER</Button>
     </NavBarWrapper>
   );
 }

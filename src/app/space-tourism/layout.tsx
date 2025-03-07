@@ -40,7 +40,6 @@ export default function SpaceTourismLayout({
   const pathname = usePathname().replace(/^\//, "");
   const backgroundImageSrcs = getBackgroundImages(pathname);
 
-  // TODO: use pathname to underline the associated navlink and to
   return (
     <>
       <GlobalStyle />
