@@ -63,6 +63,8 @@ const MobileMenu = styled.div<MobileMenuProps>`
   background-color: black;
   color: white;
   transition: right 1s;
+  background-color: rgba(11, 13, 23, 0.15);
+  backdrop-filter: blur(80px);
 `;
 
 const NavBarWrapper = styled.nav`
