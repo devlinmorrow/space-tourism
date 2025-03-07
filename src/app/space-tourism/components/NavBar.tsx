@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { QUERIES } from "../../constants";
+import { createPortal } from "react-dom";
 
 export function NavBar() {
   const pathname = usePathname();
@@ -15,8 +16,8 @@ export function NavBar() {
   ];
 
   const handleClick = () => {
-    console.log('hamburger clicked')
-  }
+    console.log("hamburger clicked");
+  };
 
   return (
     <NavBarWrapper>
@@ -32,6 +33,10 @@ export function NavBar() {
         );
       })}
       <Button onClick={handleClick}>HAMBURGER</Button>
+      {createPortal(
+        <MobileMenu>This child is placed in the document body.</MobileMenu>,
+        document.body,
+      )}
     </NavBarWrapper>
   );
 }
@@ -39,6 +44,15 @@ export function NavBar() {
 // TODO: Hamburger menu should be rendered but outside the right of
 // the viewport, then when the hamburger is clicked, update the
 // position to show the menu inside the viewport
+
+const MobileMenu = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  height: 100vh;
+  background-color: aliceblue;
+`;
 
 const NavBarWrapper = styled.nav`
   display: flex;
