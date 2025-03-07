@@ -1,4 +1,5 @@
 import { textPreset8 } from "@/app/globalStyles";
+import { useState } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -7,6 +8,7 @@ import { createPortal } from "react-dom";
 
 export function NavBar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   const tabList = [
     { path: "/space-tourism", text: "Home" },
@@ -14,10 +16,6 @@ export function NavBar() {
     { path: "/space-tourism/crew", text: "Crew" },
     { path: "/space-tourism/technology", text: "Technology" },
   ];
-
-  const handleClick = () => {
-    console.log("hamburger clicked");
-  };
 
   return (
     <NavBarWrapper>
@@ -32,9 +30,16 @@ export function NavBar() {
           </NavLink>
         );
       })}
-      <Button onClick={handleClick}>HAMBURGER</Button>
+      {
+        <MenuButton $open={open} onClick={() => setOpen(true)}>
+          HAMBURGER
+        </MenuButton>
+      }
       {createPortal(
-        <MobileMenu>This child is placed in the document body.</MobileMenu>,
+        <MobileMenu $open={open}>
+          <MenuButton onClick={() => setOpen(false)}>Close</MenuButton>This
+          child is placed in the document body.
+        </MobileMenu>,
         document.body,
       )}
     </NavBarWrapper>
@@ -45,13 +50,19 @@ export function NavBar() {
 // the viewport, then when the hamburger is clicked, update the
 // position to show the menu inside the viewport
 
-const MobileMenu = styled.div`
-  position: absolute;
+interface MobileMenuProps {
+  $open?: boolean;
+}
+
+const MobileMenu = styled.div<MobileMenuProps>`
+  position: fixed;
   top: 0;
-  right: 0;
+  right: ${(props) => (props.$open ? 0 : "-100%")};
   z-index: 100;
   height: 100vh;
-  background-color: aliceblue;
+  background-color: black;
+  color: white;
+  transition: right 1s;
 `;
 
 const NavBarWrapper = styled.nav`
@@ -64,6 +75,7 @@ const NavBarWrapper = styled.nav`
   height: 100%;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
+  color: white;
 
   @media ${QUERIES.mobileAndDown} {
     background-color: unset;
@@ -71,12 +83,17 @@ const NavBarWrapper = styled.nav`
   }
 `;
 
-const Button = styled.button`
-  display: none;
+interface MenuButtonProps {
+  $open?: boolean;
+}
+const MenuButton = styled.button<MenuButtonProps>`
+  display: block;
   color: white;
+  opacity: 0;
+  transition: opacity 500ms;
 
   @media ${QUERIES.mobileAndDown} {
-    display: block;
+    opacity: ${(props) => (props.$open ? 0 : 1)};
   }
 `;
 
