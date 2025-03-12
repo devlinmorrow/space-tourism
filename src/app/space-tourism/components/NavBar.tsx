@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { QUERIES } from "../../constants";
 import { createPortal } from "react-dom";
+import Image from "next/image";
+import closeIcon from "../../../../public/assets/shared/icon-close.svg";
 
 export function NavBar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const tabList = [
     { path: "/space-tourism", text: "Home" },
@@ -39,7 +41,9 @@ export function NavBar() {
       {createPortal(
         <MobileMenu $open={open}>
           <CloseButtonWrapper>
-            <MenuButton onClick={() => setOpen(false)}>Close</MenuButton>
+            <MenuButton onClick={() => setOpen(false)}>
+              <Image src={closeIcon} alt="close"></Image>
+            </MenuButton>
           </CloseButtonWrapper>
 
           <div>This child is placed in the document body.</div>
@@ -98,6 +102,7 @@ const CloseButtonWrapper = styled.div`
 interface MenuButtonProps {
   $open?: boolean;
 }
+
 const MenuButton = styled.button<MenuButtonProps>`
   display: block;
   color: white;
