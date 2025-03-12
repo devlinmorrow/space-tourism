@@ -8,7 +8,7 @@ import { createPortal } from "react-dom";
 
 export function NavBar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const tabList = [
     { path: "/space-tourism", text: "Home" },
@@ -35,10 +35,14 @@ export function NavBar() {
           HAMBURGER
         </MenuButton>
       }
+
       {createPortal(
         <MobileMenu $open={open}>
-          <MenuButton onClick={() => setOpen(false)}>Close</MenuButton>This
-          child is placed in the document body.
+          <CloseButtonWrapper>
+            <MenuButton onClick={() => setOpen(false)}>Close</MenuButton>
+          </CloseButtonWrapper>
+
+          <div>This child is placed in the document body.</div>
         </MobileMenu>,
         document.body,
       )}
@@ -83,6 +87,12 @@ const NavBarWrapper = styled.nav`
     background-color: unset;
     backdrop-filter: unset;
   }
+`;
+
+const CloseButtonWrapper = styled.div`
+  padding: 32px;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 interface MenuButtonProps {
