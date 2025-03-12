@@ -7,6 +7,7 @@ import { QUERIES } from "../../constants";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import closeIcon from "../../../../public/assets/shared/icon-close.svg";
+import hamburgerIcon from "../../../../public/assets/shared/icon-hamburger.svg";
 
 export function NavBar() {
   const pathname = usePathname();
@@ -34,7 +35,7 @@ export function NavBar() {
       })}
       {
         <MenuButton $open={open} onClick={() => setOpen(true)}>
-          HAMBURGER
+          <Image src={hamburgerIcon} alt="open menu"></Image>
         </MenuButton>
       }
 
