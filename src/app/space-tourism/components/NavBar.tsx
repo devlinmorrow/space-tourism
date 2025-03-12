@@ -47,17 +47,25 @@ export function NavBar() {
             </MenuButton>
           </CloseButtonWrapper>
 
-          <div>This child is placed in the document body.</div>
+          <div>
+            {tabList.map((tab, i) => {
+              return (
+                <NavLink
+                  key={tab.path}
+                  href={tab.path}
+                  $active={tab.path === pathname}
+                >
+                  <b>0{i}</b> {tab.text.toUpperCase()}
+                </NavLink>
+              );
+            })}
+          </div>
         </MobileMenu>,
         document.body,
       )}
     </NavBarWrapper>
   );
 }
-
-// TODO: Hamburger menu should be rendered but outside the right of
-// the viewport, then when the hamburger is clicked, update the
-// position to show the menu inside the viewport
 
 interface MobileMenuProps {
   $open?: boolean;
