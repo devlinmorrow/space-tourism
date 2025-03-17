@@ -22,17 +22,19 @@ export function NavBar() {
 
   return (
     <NavBarWrapper>
-      {tabList.map((tab, i) => {
-        return (
-          <NavLink
-            key={tab.path}
-            href={tab.path}
-            $active={tab.path === pathname}
-          >
-            <b>0{i}</b> {tab.text.toUpperCase()}
-          </NavLink>
-        );
-      })}
+      <NavLinks>
+        {tabList.map((tab, i) => {
+          return (
+            <NavLink
+              key={tab.path}
+              href={tab.path}
+              $active={tab.path === pathname}
+            >
+              <b>0{i}</b> {tab.text.toUpperCase()}
+            </NavLink>
+          );
+        })}
+      </NavLinks>
       {
         <MenuButton $open={open} onClick={() => setOpen(true)}>
           <Image src={hamburgerIcon} alt="open menu"></Image>
@@ -47,7 +49,7 @@ export function NavBar() {
             </MenuButton>
           </CloseButtonWrapper>
 
-          <div>
+          <MobileNavLinks>
             {tabList.map((tab, i) => {
               return (
                 <NavLink
@@ -59,7 +61,7 @@ export function NavBar() {
                 </NavLink>
               );
             })}
-          </div>
+          </MobileNavLinks>
         </MobileMenu>,
         document.body,
       )}
@@ -71,26 +73,48 @@ interface MobileMenuProps {
   $open?: boolean;
 }
 
-const MobileMenu = styled.div<MobileMenuProps>`
-  position: fixed;
-  top: 0;
-  right: ${(props) => (props.$open ? 0 : "-100%")};
-  z-index: 100;
-  height: 100vh;
-  background-color: black;
-  color: white;
-  transition: right 1s;
-  background-color: rgba(11, 13, 23, 0.15);
-  backdrop-filter: blur(80px);
-`;
-
-const NavBarWrapper = styled.nav`
+const NavLinks = styled.div`
   display: flex;
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 64px 0 32px;
   gap: 32px;
+
+  @media ${QUERIES.mobileAndDown} {
+    display: none;
+  }
+`
+
+const MobileNavLinks = styled.div`
+  display: none;
+
+  @media ${QUERIES.mobileAndDown} {
+    display: block;
+  }
+`
+
+const MobileMenu = styled.div<MobileMenuProps>`
+  display: none;
+
+  @media ${QUERIES.mobileAndDown} {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: ${(props) => (props.$open ? 0 : "-100%")};
+    z-index: 100;
+    height: 100vh;
+    width: 254px;
+    background-color: black;
+    color: white;
+    transition: right 1s;
+    background-color: rgba(11, 13, 23, 0.15);
+    backdrop-filter: blur(80px);
+  }
+`;
+
+const NavBarWrapper = styled.nav`
+  display: flex;
+  padding: 0 64px 0 32px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
@@ -127,7 +151,7 @@ interface NavLinkProps {
   $active?: boolean;
 }
 
-const NavLink = styled(Link)<NavLinkProps>`
+const NavLink = styled(Link) <NavLinkProps>`
   height: 100%;
   display: flex;
   align-items: center;
@@ -137,8 +161,12 @@ const NavLink = styled(Link)<NavLinkProps>`
   border-top: solid 4px transparent;
   border-bottom: ${(props) =>
     props.$active ? "solid 4px white" : "solid 4px transparent"};
+  border-right: none;
 
   @media ${QUERIES.mobileAndDown} {
-    display: none;
+    border-bottom: none;
+    border-right: ${(props) =>
+    props.$active ? "solid 4px white" : "solid 4px transparent"};
+    padding: 8px 0 8px 16px;
   }
 `;
