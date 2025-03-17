@@ -55,6 +55,7 @@ export function NavBar() {
                 <NavLink
                   key={tab.path}
                   href={tab.path}
+                  onClick={() => setOpen(false)}
                   $active={tab.path === pathname}
                 >
                   <b>0{i}</b> {tab.text.toUpperCase()}
